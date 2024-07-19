@@ -13,15 +13,15 @@ const path = require('path');
 const collegeData = require("./modules/collegeData");
 const bodyParser = require('body-parser');
 const app = express();
-const HTTP_PORT = process.env.PORT || 8080;
+const HTTP_PORT = process.env.PORT || 3000//8080;
 
 
 app.set('views', __dirname + '/views');
 
 
 // Serve static files from the 'Public' directory
-app.use(express.static(path.join(__dirname, 'Public')));
-
+// app.use(express.static(path.join(__dirname, 'Public')));
+app.use(express.static('Public'));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -144,5 +144,8 @@ app.use((req, res) => {
     res.status(404).json({ message: "Page Not THERE, Are you sure of the path?" });
 });
 
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
 // Export app for testing purposes
 module.exports = app;
