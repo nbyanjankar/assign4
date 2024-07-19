@@ -145,8 +145,6 @@ app.use((req, res) => {
     res.status(404).json({ message: "Page Not THERE, Are you sure of the path?" });
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+
 // Export app for testing purposes
 module.exports = app;
