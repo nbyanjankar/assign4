@@ -13,7 +13,7 @@ const path = require('path');
 const collegeData = require("./modules/collegeData");
 const bodyParser = require('body-parser');
 const app = express();
-const HTTP_PORT = process.env.PORT || 3000//8080;
+const HTTP_PORT = process.env.PORT || 8080;
 
 
 app.set('views', __dirname + '/views');
@@ -40,21 +40,21 @@ collegeData.initialize()
 
 // Route for home.html
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'home.html'));
+    res.sendFile(path.join(__dirname, '/views/home.html'));
 });
 
 // Route for about.html (assuming you create this file)
 app.get("/about", (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'about.html'));
+    res.sendFile(path.join(__dirname, '/views/about.html'));
 });
 
 // Route for htmlDemo.html (assuming you create this file)
 app.get("/htmlDemo", (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'htmldemo.html'));
+    res.sendFile(path.join(__dirname, '/views/htmldemo.html'));
 });
 
 app.get("/students/add", (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'addStudent.html'));
+    res.sendFile(path.join(__dirname, '/views/addStudent.html'));
 });
 
   
