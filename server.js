@@ -20,7 +20,8 @@ app.set('views', __dirname + '/views');
 
 
 // Serve static files from the 'Public' directory
-// app.use(express.static(path.join(__dirname, 'Public')));
+app.use(express.static(path.join(__dirname, 'Public')));
+
 app.use(express.static('Public'));
 
 app.use(bodyParser.urlencoded({ extended: true }));
