@@ -124,3 +124,25 @@
     
 })(jQuery);
 
+function getCourses() {
+    return new Promise((resolve, reject) => {
+        if (courses.length > 0) {
+            resolve(courses);
+        } else {
+            reject('No courses found');
+        }
+    });
+}
+
+
+function getCourseById(id) {
+    return new Promise((resolve, reject) => {
+        const course = courses.find(c => c.courseId == id);
+        if (course) {
+            resolve(course);
+        } else {
+            reject('Course not found');
+        }
+    });
+}
+

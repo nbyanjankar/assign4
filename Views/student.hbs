@@ -18,13 +18,14 @@
                     <dt class="col-sm-3">Email</dt>
                     <dd class="col-sm-9"><a href="mailto:{{student.email}}">{{student.email}}</a></dd>
                     <dt class="col-sm-3">Address</dt>
-                    <dd class="col-sm-9">{{student.addressStreet}}, {{student.addressCity}}, {{student.addressProvince}}</dd>
+                    <dd class="col-sm-9">{{student.addressStreet}}, {{student.addressCity}},{{student.addressProvince}}</dd>
                     <dt class="col-sm-3">Status</dt>
                     <dd class="col-sm-9">{{student.status}}</dd>
                     <dt class="col-sm-3">Course ID</dt>
                     <dd class="col-sm-9"><a href="/students?course={{student.course}}">{{student.course}}</a></dd>
                 </dl>
             </div>
+            <a href="/updatestd"><div class="btn btn-success">Update</div></a>
         </div>
     </div>
 </div>

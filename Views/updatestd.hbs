@@ -1,0 +1,103 @@
+
+<div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 90px;">
+    <div class="row py-5">
+        <div class="col-12 pt-lg-5 mt-lg-5 text-center">
+            <h1 class="display-4 text-white animated zoomIn">{{this.firstName}} {{this.lastName}}</h1>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="card mb-5">
+        <div class="row p-5">
+            <div class="col-md-12">
+                <dl class="row">
+                    <dt class="col-sm-3">Student Number</dt>
+                    <dd class="col-sm-9">{{this.studentNum}}</dd>
+                    <dt class="col-sm-3">Full Name</dt>
+                    <dd class="col-sm-9">{{this.firstName}} {{this.lastName}}</dd>
+                    <dt class="col-sm-3">Email</dt>
+                    <dd class="col-sm-9"><a href="mailto:{{this.email}}">{{this.email}}</a></dd>
+                    <dt class="col-sm-3">Address</dt>
+                    <dd class="col-sm-9">{{this.addressStreet}}, {{this.addressCity}}, {{this.addressProvince}}</dd>
+                    <dt class="col-sm-3">Status</dt>
+                    <dd class="col-sm-9">{{this.status}}</dd>
+                    <dt class="col-sm-3">Course ID</dt>
+                    <dd class="col-sm-9"><a href="/students?course={{this.course}}">{{this.course}}</a></dd>
+                </dl>
+                <!-- Update Form -->
+                <form method="post" action="/student/update">
+                    <input type="hidden" name="studentNum" value="{{this.studentNum}}" />
+                    <fieldset>
+                        <legend>Update Information</legend>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>First Name:</label>
+                                    <input class="form-control" name="firstName" type="text" value="{{this.firstName}}" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Last Name:</label>
+                                    <input class="form-control" name="lastName" type="text" value="{{this.lastName}}" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Email:</label>
+                                    <input class="form-control" name="email" type="email" value="{{this.email}}" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Address Street:</label>
+                                    <input class="form-control" name="addressStreet" type="text" value="{{this.addressStreet}}" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Address City:</label>
+                                    <input class="form-control" name="addressCity" type="text" value="{{this.addressCity}}" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Address Province:</label>
+                                    <input class="form-control" name="addressProvince" type="text" value="{{this.addressProvince}}" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Status:</label>
+                                    <select class="form-control" name="status">
+                                        <option value="Full Time" {{#if (equal this.status "Full Time")}}selected{{/if}}>Full Time</option>
+                                        <option value="Part Time" {{#if (equal this.status "Part Time")}}selected{{/if}}>Part Time</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Course:</label>
+                                    <input class="form-control" name="course" type="number" value="{{this.course}}" />
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <hr />
+                    <input type="submit" class="btn btn-primary float-right" value="Update Student" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -93,7 +93,9 @@ app.get("/students/add", (req, res) => {
 app.get("/singlestudent", (req, res) => {
     res.render('singlestd');
 });
-  
+app.get("/updatestd", (req, res) => {
+    res.render('updatestd');
+});
 
 // middleware
 app.use(function(req, res, next) {
@@ -123,6 +125,15 @@ app.get('/courses', (req, res) => {
         let courses = JSON.parse(data);
         res.render('courses', { courses: courses });
     });
+});
+app.get('/course/:id', (req, res) => {
+    collegeData.getCourseById(req.params.id)
+        .then(course => {
+            res.render('course', { course });
+        })
+        .catch(err => {
+            res.status(404).send(err);
+        });
 });
 
 
