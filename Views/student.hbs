@@ -1,0 +1,35 @@
+{{#if student}}
+<div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 90px;">
+    <div class="row py-5">
+        <div class="col-12 pt-lg-5 mt-lg-5 text-center">
+            <h1 class="display-4 text-white animated zoomIn">{{student.firstName}} {{student.lastName}}</h1>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="card mb-5">
+        <div class="row p-5">
+            <div class="col-md-12">
+                <dl class="row">
+                    <dt class="col-sm-3">Student Number</dt>
+                    <dd class="col-sm-9">{{student.studentNum}}</dd>
+                    <dt class="col-sm-3">Full Name</dt>
+                    <dd class="col-sm-9">{{student.firstName}} {{student.lastName}}</dd>
+                    <dt class="col-sm-3">Email</dt>
+                    <dd class="col-sm-9"><a href="mailto:{{student.email}}">{{student.email}}</a></dd>
+                    <dt class="col-sm-3">Address</dt>
+                    <dd class="col-sm-9">{{student.addressStreet}}, {{student.addressCity}}, {{student.addressProvince}}</dd>
+                    <dt class="col-sm-3">Status</dt>
+                    <dd class="col-sm-9">{{student.status}}</dd>
+                    <dt class="col-sm-3">Course ID</dt>
+                    <dd class="col-sm-9"><a href="/students?course={{student.course}}">{{student.course}}</a></dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+{{else}}
+<div class="text-center">
+    <strong>{{message}}</strong>
+</div>
+{{/if}}

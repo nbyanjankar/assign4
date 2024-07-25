@@ -64,6 +64,9 @@
     padding: 10px;
 }
 
+.custom-table .table th{
+    text-align: left !important;
+}
 
 /*** Heading ***/
 

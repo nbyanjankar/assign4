@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Assignment 4</title>
+    <title>Assignment 5</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -40,7 +40,7 @@
     <!-- Navbar & Carousel Start -->
     <div class="container-fluid position-relative p-0">
         <nav class="navbar navbar-expand-lg navbar-dark px-5 py-lg-0">
-            <a href="home.html" class="navbar-brand p-0">
+            <a href="/" class="navbar-brand p-0">
                 <!-- <img class="logo" src="img/logo.png"> -->
                  
             </a>
@@ -49,58 +49,33 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
-                    <a href="/" class="nav-item nav-link active">Home</a>
-                    <a href="/about" class="nav-item nav-link">About</a>
-                    <a href="/htmlDemo" class="nav-item nav-link">HTML Demo</a>
+                    {{#navLink "/"}}Home{{/navLink}}
+                    {{#navLink "/about"}}About{{/navLink}}
+                    {{#navLink "/htmlDemo"}}HTML Demo{{/navLink}}
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Students</a>
                         <div class="dropdown-menu m-0">
-                            <a href="/students" class="dropdown-item">All Students</a>
-                            <a href="/studentscourse" class="dropdown-item">Students by Course</a>
-                            <a href="/student/:studentNum" class="dropdown-item">A Single Student By Student Number</a>
+                            {{#navLink "/students"}}All Students{{/navLink}}
+                            {{#navLink "/studentscourse"}}Students by Course{{/navLink}}
+                            {{#navLink "/singlestudent"}}A Single Student By Student Number{{/navLink}}
                         </div>
                     </div>
-                    <a href="/managers" class="nav-item nav-link">ALl Managers</a>
-                    <a href="" class="nav-item nav-link">All Courses</a>
-                    <a href="/students/add" class="nav-item  active nav-link">
-                        <div class="buttn">
-                            Add Student
-                        </div>
-                    </a>
+                    {{#navLink "/managers"}}All Managers{{/navLink}}
+                    {{#navLink "/courses"}}All Courses{{/navLink}}
+                    {{#navLink "/students/add"}}Add Student{{/navLink}}
                 </div>
+            </div>
 
-            </div>
         </nav>
-        <div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 90px;">
-            <div class="row py-5">
-                <div class="col-12 pt-lg-5 mt-lg-5 text-center">
-                    <h1 class="display-4 text-white animated zoomIn">About Us</h1>
-                    
-                </div>
-            </div>
-        </div>
-        <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
-            <div class="container py-5">
-                <div class="row g-5">
-                    <div class="col-lg-5" style="min-height: 500px;">
-                        <div class="position-relative h-100">
-                            <img class="position-absolute w-100 h-100 rounded wow zoomIn" data-wow-delay="0.9s" src="img/me.jpg" style="object-fit: cover;">
-                        </div>
-                    </div>
-                    <div class="col-lg-7">
-                        <div class="section-title position-relative pb-3 mb-5">
-                            <h1 class="mb-0">Nigan Byanjankar</h1>
-                        </div>
-                        <p>
-                           I am a dedicated student currently enrolled in the BTT program. My student ID is 151732237. I am passionate about web development and constantly learning new technologies to enhance my skills.
-                        </p>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-        
     </div>
+        
+    <!-- Navbar & Carousel End -->
+   
+        {{{body}}}
+
+
+    
+
     <div class="container-fluid text-white" style="background: #061429;">
         <div class="container text-center">
             <div class="row justify-content-end">
@@ -112,9 +87,6 @@
             </div>
         </div>
     </div>
-    <!-- Footer End -->
-
-
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-color btn-lg-square rounded back-to-top"><i class="bi bi-arrow-up"></i></a>
 
@@ -131,4 +103,5 @@
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
 </body>
+
 </html>
