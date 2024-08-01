@@ -1,10 +1,10 @@
 /*********************************************************************************
-* WEB700 – Assignment 04
+* WEB700 – Assignment 05
 * I declare that this assignment is my own work in accordance with Seneca Academic Policy. No part
 * of this assignment has been copied manually or electronically from any other source
 * (including 3rd party web sites) or distributed to other students.
 *
-* Name: Nigan Byanjankar     Student ID: 151732237   Date: 2024/07/18
+* Name: Nigan Byanjankar     Student ID: 151732237   Date: 2024/07/25
 *
 * Online (Heroku) Link: https://nbyanjankarassign4-278cf242585b.herokuapp.com/
 *
@@ -22,7 +22,12 @@ const exphbs = require('express-handlebars');
 const studentsFilePath = path.join(__dirname, 'data', 'students.json');
 let students = [];
 
-app.set('views', __dirname + '/views');
+app.set('views', __dirname + '/Views');
+
+// Serve static files from the 'Public' directory
+app.use(express.static(__dirname + '/Public'));
+
+app.use(express.static('Public'));
 
 const hbs = exphbs.create({
     extname: '.hbs',
@@ -47,10 +52,7 @@ const hbs = exphbs.create({
 app.engine('.hbs', hbs.engine);
 app.set('view engine', '.hbs');
 
-// Serve static files from the 'Public' directory
-app.use(express.static(path.join(__dirname, 'Public')));
 
-app.use(express.static('Public'));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
