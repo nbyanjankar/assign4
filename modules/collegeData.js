@@ -46,6 +46,21 @@ function initialize() {
     });
 }
 
+const Sequelize = require('sequelize');
+var sequelize = new Sequelize('database', 'nbyanjankar', 'zenbZENB@13', {
+    host: 'host',
+    dialect: 'postgres',
+    port: 5432,
+    dialectOptions: {
+        ssl: { rejectUnauthorized: false }
+    },
+    query: { raw: true }
+});
+
+
+
+
+
 // Function to get all students
 function getAllStudents() {
     return new Promise((resolve, reject) => {

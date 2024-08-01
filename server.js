@@ -128,18 +128,43 @@ app.get('/courses', (req, res) => {
         res.render('courses', { courses: courses });
     });
 });
-app.get('/course/:id', (req, res) => {
-    collegeData.getCourseById(req.params.id)
-        .then(course => {
-            res.render('course', { course });
-        })
-        .catch(err => {
-            res.status(404).send(err);
-        });
-});
+
+app.get("/courses/:courseId", (req, res) => {
+    dataCollection
+      .getCourseById(req.params.courseId)
+      .then((result) => {
+        if (result == undefined) {
+          res.status(404).send("Course not found");
+        } else {
+          res.render("course", { course: result });
+        }
+      })
+      .catch((err) => res.status(500).send({ message: "no results" }));
+  });
+
+  app.get("/courses/delete/:courseId", (req, res) => {
+    dataCollection
+      .deleteCourseById(req.params.courseId)
+      .then((result) => {
+        res.redirect("/courses");
+      })
+      .catch((err) => res.status(500).send({ message: "no results" }));
+  });
+
+  app.post("/courses/add", (req, res) => {
+    dataCollection
+      .addCourse(req.body)
+      .then((v) => res.redirect("/courses/" + v))
+      .catch((err) =>
+        res.status(500).send({ message: "Couldn't register course." }),
+      );
+  });
 
 
-
+  app.post("/courses/update", (req, res) => {
+    dataCollection.updateCourse(req.body).then(() => res.redirect("/courses"));
+  });
+  
 // Example route for /students by course
 app.get("/studentscourse", (req, res) => {
     const course = req.query.course;
@@ -189,30 +214,30 @@ app.get('/student', (req, res) => {
     }
 });
 
-app.get('/student', (req, res) => {
-    console.log('Query Parameters:', req.query); // Log query parameters
-    
-    const studentNum = parseInt(req.query.studentNum, 10); // Convert input to integer
-    console.log('Converted studentNum:', studentNum); // Log converted student number
-
-    if (isNaN(studentNum)) {
-        return res.render('student', { message: 'Invalid student number' });
-    }
-
-    const student = students.find(s => s.studentNum === studentNum);
-    console.log('Found student:', student); // Log the student object if found
-
-    if (student) {
-        res.render('student', { student });
-    } else {
-        res.render('student', { message: 'Student not found' });
-    }
-});
+app.post("/student/update", (req, res) => {
+    dataCollection.updateStudent(req.body).then(() => res.redirect("/students"));
+  });
+  
+  app.post("/students/add", (req, res) => {
+    dataCollection
+      .addStudent(req.body)
+      .then((v) => res.redirect("/students/" + v))
+      .catch((err) =>
+        res.status(500).send({ message: "Couldn't register student." }),
+      );
+  });
 
 
+  app.get("/students/delete/:studentId", (req, res) => {
+    dataCollection
+      .deleteStudentById(req.params.studentId)
+      .then((result) => {
+        res.redirect("/students");
+      })
+      .catch((err) => res.status(500).send({ message: "no results" }));
+  });
 
-
-
+  
 
 // Example route for /managers (assuming you have this function)
 app.get("/managers", (req, res) => {
