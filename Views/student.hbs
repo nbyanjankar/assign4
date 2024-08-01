@@ -1,8 +1,8 @@
-{{#if student}}
+
 <div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 90px;">
     <div class="row py-5">
         <div class="col-12 pt-lg-5 mt-lg-5 text-center">
-            <h1 class="display-4 text-white animated zoomIn">{{student.firstName}} {{student.lastName}}</h1>
+            <h1 class="display-4 text-white animated zoomIn">{{viewData.student.firstName}} {{viewData.student.lastName}}</h1>
         </div>
     </div>
 </div>
@@ -12,25 +12,30 @@
             <div class="col-md-12">
                 <dl class="row">
                     <dt class="col-sm-3">Student Number</dt>
-                    <dd class="col-sm-9">{{student.studentNum}}</dd>
+                    <dd class="col-sm-9">{{viewData.student.studentNum}}</dd>
                     <dt class="col-sm-3">Full Name</dt>
-                    <dd class="col-sm-9">{{student.firstName}} {{student.lastName}}</dd>
+                    <dd class="col-sm-9">{{viewData.student.firstName}} {{viewData.student.lastName}}</dd>
                     <dt class="col-sm-3">Email</dt>
-                    <dd class="col-sm-9"><a href="mailto:{{student.email}}">{{student.email}}</a></dd>
+                    <dd class="col-sm-9"><a href="mailto:{{viewData.student.email}}">{{viewData.student.email}}</a></dd>
                     <dt class="col-sm-3">Address</dt>
-                    <dd class="col-sm-9">{{student.addressStreet}}, {{student.addressCity}},{{student.addressProvince}}</dd>
+                    <dd class="col-sm-9">{{viewData.student.addressStreet}}, {{viewData.student.addressCity}},{{viewData.student.addressProvince}}</dd>
                     <dt class="col-sm-3">Status</dt>
-                    <dd class="col-sm-9">{{student.status}}</dd>
+                    <dd class="col-sm-9">{{viewData.student.status}}</dd>
                     <dt class="col-sm-3">Course ID</dt>
-                    <dd class="col-sm-9"><a href="/students?course={{student.course}}">{{student.course}}</a></dd>
+                    <dd class="col-sm-9">
+                        {{#if viewData.courses}}
+                        <select class="form-control" name="course" id="course">
+                        {{#each viewData.courses}}
+                            <option value="{{courseId}}" {{#if selected}} selected {{/if}}>{{courseCode}}</option>
+                        {{/each}}
+                    </select>
+                    {{else}}
+                    <div>No Courses</div>
+                    {{/if}}
+                    </dd>
                 </dl>
             </div>
-            <a href="/updatestd"><div class="btn btn-success">Update</div></a>
+            <button type="submit" class="btn btn-success">Update</button>   
         </div>
     </div>
 </div>
-{{else}}
-<div class="text-center">
-    <strong>{{message}}</strong>
-</div>
-{{/if}}

@@ -14,19 +14,19 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Course ID</th>
                                 <th>Course Code</th>
                                 <th>Course Description</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            {{#each courses}}
-                            <tr>
-                                <td>{{this.courseId}}</td>
-                                <td>{{this.courseCode}}</td>
-                                <td>{{this.courseDescription}}</td>
-                            </tr>
-                            {{/each}}
+                           {{#each courses}}
+                                <tr>
+                                    <td><a href="/course/{{courseId}}">{{courseCode}}</a></td>
+                                    <td>{{courseDescription}}</td>
+                                    <td><a href="/course/delete/{{courseId}}" class="btn btn-danger">Remove</a></td>
+                                </tr>
+                                {{/each}}
                         </tbody>
                     </table>
                 </div>

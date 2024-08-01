@@ -86,9 +86,10 @@
                                     <option value="2">Select Course</option>
                                     {{#each courses}}
                                     <option value="{{courseId}}">{{courseCode}}</option>
-                                {{/each}}
+                                    {{/each}}
+                                </select>
                                 {{else}}
-                                    <div>No Courses</div>
+                                <div>No Courses</div>
                                 {{/if}}
                                 </select>
                             </div>
@@ -96,6 +97,6 @@
                     </div>
                 </fieldset>
                 <hr />
-                <input type="submit" class="btn btn-primary float-right" value="Add Student" /><br /><br /><br />
+                <input type="submit" class="btn btn-success float-right" value="Add Student" /><br /><br /><br />
             </form>
         </main>
