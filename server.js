@@ -110,24 +110,30 @@ app.use(function(req, res, next) {
 
 
 app.get('/students', (req, res) => {
-    fs.readFile('./data/students.json', 'utf8', (err, data) => {
-        if (err) {
-            return res.render('students', { message: "no results" });
-        }
-        let students = JSON.parse(data);
-        res.render('students', { students: students });
+    collegeData.getAllStudents().then((data) => {
+      if (data.length > 0) {
+        res.render('students', { students: data });
+      } else {
+        res.render('students', { message: "no results" });
+      }
+    }).catch((err) => {
+      res.render('students', { message: "no results" });
     });
-});
+  });
+  
 
-app.get('/courses', (req, res) => {
-    fs.readFile('./data/courses.json', 'utf8', (err, data) => {
-        if (err) {
-            return res.render('courses', { message: "no results" });
-        }
-        let courses = JSON.parse(data);
-        res.render('courses', { courses: courses });
+  app.get('/courses', (req, res) => {
+    collegeData.getCourses().then((data) => {
+      if (data.length > 0) {
+        res.render('courses', { courses: data });
+      } else {
+        res.render('courses', { message: "no results" });
+      }
+    }).catch((err) => {
+      res.render('courses', { message: "no results" });
     });
-});
+  });
+  
 
 app.get("/courses/:courseId", (req, res) => {
     dataCollection
@@ -164,7 +170,7 @@ app.get("/courses/:courseId", (req, res) => {
   app.post("/courses/update", (req, res) => {
     dataCollection.updateCourse(req.body).then(() => res.redirect("/courses"));
   });
-  
+
 // Example route for /students by course
 app.get("/studentscourse", (req, res) => {
     const course = req.query.course;
